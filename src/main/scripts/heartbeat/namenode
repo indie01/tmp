@@ -1,0 +1,192 @@
+#!/bin/sh
+#######################################################################
+# OCF parameters:
+#   OCF_RESKEY_hadoop_name - The name of the resource. Default is jobtracker
+#   OCF_RESKEY_hadoop_user  - A user name to start a resource. Default is hadoop
+#   OCF_RESKEY_hadoop_home - Home directory of Hadoop. Default is None
+#   OCF_RESKEY_hadoop_http_host - Http Server Host Address of Hadoop.
+#   OCF_RESKEY_hadoop_http_port - Http Server port number of Hadoop.
+###############################################################################
+
+. ${OCF_ROOT}/resource.d/heartbeat/.ocf-shellfuncs
+
+HADOOP_NAME="${OCF_RESKEY_hadoop_name}"
+HADOOP_USER="${OCF_RESKEY_hadoop_user}"
+HADOOP_HOME=`echo ${OCF_RESKEY_hadoop_home} | sed -e "s/\(.*\)\/$/\1/g"`
+HADOOP_HTTP="${OCF_RESKEY_hadoop_http}"
+HADOOP_HTTP_PORT="${OCF_RESKEY_hadoop_http_port}"
+
+monitor_namenode()
+{
+	process=`/usr/bin/pgrep -f namenode`
+	if [ -z "$process" ]; then
+		return $OCF_NOT_RUNNING
+	fi
+
+	if wget -O /dev/null http://$HADOOP_HTTP:$HADOOP_HTTP_PORT/index.html 2>/dev/null
+	then
+		return $OCF_SUCCESS
+	else
+		return $OCF_NOT_RUNNING
+	fi
+}
+
+leave_safemode() {
+
+   node_num=`grep -v "^#" $HADOOP_HOME/conf/slaves | sed 's/ //g' | grep -v "^$" | wc -l`
+   check_num=`expr $node_num - 1`
+
+   while true; do
+     num=`su - $HADOOP_USER -c "$HADOOP_HOME/bin/hadoop dfsadmin -report" | grep Datanodes | awk '{print $3}'`
+     if [ "$num" -lt $check_num  ] ; then
+       sleep 1
+       continue
+     fi
+     if ! su - $HADOOP_USER -c "$HADOOP_HOME/bin/hadoop fsck /" | grep "The filesystem" | grep HEALTHY > /dev/null ; then
+       sleep 1
+       continue
+     fi
+     break
+   done
+   su - $HADOOP_USER -c "$HADOOP_HOME/bin/hadoop dfsadmin -safemode leave"
+   
+}
+
+start_namenode()
+{
+        cd $HADOOP_HOME
+	monitor_namenode
+	if [ $? = $OCF_SUCCESS ]; then
+		return $OCF_SUCCESS
+	fi
+	
+	su - $HADOOP_USER -c "$HADOOP_HOME/bin/hadoop-daemon.sh start namenode" &
+	while true; do
+		monitor_namenode
+		if [ $? = $OCF_SUCCESS ]; then
+			break
+		fi
+	done
+        leave_safemode 
+
+	return $OCF_SUCCESS
+}
+
+stop_namenode()
+{
+	cd $HADOOP_HOME
+	monitor_namenode
+	if [ $? = $OCF_NOT_RUNNING ]; then
+		return $OCF_SUCCESS
+	fi
+	
+	su - $HADOOP_USER -c "$HADOOP_HOME/bin/hadoop-daemon.sh stop namenode" &
+	
+	while true; do
+		monitor_namenode
+		if [ $? = $OCF_NOT_RUNNING ]; then
+			break
+		fi
+	done
+
+	return $OCF_SUCCESS
+}
+
+metadata_namenode()
+{
+    cat <<END
+<?xml version="1.0"?>
+<!DOCTYPE resource-agent SYSTEM "ra-api-1.dtd">
+<resource-agent name="namenode">
+<version>1.0</version>
+
+<longdesc lang="en">
+Resource script for Hadoop Namenode. It manages a Hadoop Namenode instance as an HA resource.
+</longdesc>
+<shortdesc lang="en">Hadoop Namenode resource agent</shortdesc>
+
+<parameters>
+
+<parameter name="hadoop_name" unique="1" >
+<longdesc lang="en">
+The name of the resource
+</longdesc>
+<shortdesc>The name of the resource</shortdesc>
+<content type="string" default="namenode" />
+</parameter>
+
+<parameter name="hadoop_user" unique="0">
+<longdesc lang="en">
+A user name to start a resource
+</longdesc>
+<shortdesc>A user name to start a resource</shortdesc>
+<content type="string" default="hadoop" />
+</parameter>
+
+<parameter name="hadoop_home" unique="1" required="1">
+<longdesc lang="en">
+Home directory of Hadoop
+</longdesc>
+<shortdesc>Home directory of Hadoop</shortdesc>
+<content type="string" default="" />
+</parameter>
+
+<parameter name="hadoop_http" unique="1" required="1">
+<longdesc lang="en">
+Http Server Host Address of Hadoop.
+</longdesc>
+<shortdesc>Http Server Host Address of Hadoop</shortdesc>
+<content type="string" default="" />
+</parameter>
+
+<parameter name="hadoop_http_port" unique="1" required="1">
+<longdesc lang="en">
+Http Server Port Number of Hadoop.
+</longdesc>
+<shortdesc>Http Server Port Number of Hadoop</shortdesc>
+<content type="string" default="" />
+</parameter>
+
+</parameters>
+
+<actions>
+<action name="start" timeout="60s" />
+<action name="stop" timeout="120s" />
+<action name="monitor" depth="0" timeout="30s" interval="10s" start-delay="10s" />
+<action name="meta-data" timeout="5s" />
+</actions>
+</resource-agent>
+END
+	return $OCF_SUCCESS
+}
+
+COMMAND=$1
+
+case "$COMMAND" in
+	start)
+		ocf_log debug  "[$HADOOP_NAME] Enter Hadoop Namenode start"
+		start_namenode
+		func_status=$?
+		ocf_log debug  "[$HADOOP_NAME] Leave Hadoop Namenode start $func_status"
+		exit $func_status
+		;;
+	stop)
+		ocf_log debug  "[$HADOOP_NAME] Enter Hadoop Namenode stop"
+		stop_namenode
+		func_status=$?
+		ocf_log debug  "[$HADOOP_NAME] Leave Hadoop Namenode stop $func_status"
+		exit $func_status
+		;;
+	monitor)
+		ocf_log debug  "[$HADOOP_NAME] Enter Hadoop Namenode monitor"
+		monitor_namenode
+		func_status=$?
+		ocf_log debug  "[$HADOOP_NAME] Leave Hadoop Namenode monitor $func_status"
+		exit $func_status
+		;;
+	meta-data)
+		metadata_namenode
+		exit $?
+		;;
+esac
+

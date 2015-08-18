@@ -1,0 +1,23 @@
+${toUser.communityName}さんの回答にコメントが届いています
+
+こんにちは
+
+${toUser.communityName}さんの回答にコメントが届いています
+
+#foreach ($comment in $comments.documents)
+Q&Ａ質問：$helper.shortTextTitle(${comment.questionAnswer.question.questionBody})
+${toUser.communityName}さんの回答：$helper.shortTextTitle(${comment.questionAnswer.answerBody})
+${comment.communityUser.communityName}さんのコメント：「$helper.shortTextBody(${comment.commentBody})」
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/product/question/${comment.questionAnswer.question.questionId}/detail.html
+
+#end
+役立ったときは、「${serviceConfig.likeAnswerLabel}」を押したり、コメントを投稿してくださいね！
+
+よろしくお願いいたします。
+ヨドバシ・ドット・コム
+----------------------------------------------------------------------------------------------------------------------
+今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻
+度を変更したい場合は、メール通知設定から変更することができます。
+
+メール通知設定
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html

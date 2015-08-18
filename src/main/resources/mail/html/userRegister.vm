@@ -1,0 +1,71 @@
+ようこそ、ヨドバシ・ドット・コムのコミュニティへ
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ヨドバシコミュニティメール</title>
+</head>
+<body style="margin: 0; padding: 0;">
+<div style="font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Osaka, sans-serif, arial, verdana; text-align: left; background: #EFEFEF; font-size: 12px; line-height: 1.4; padding: 20px 0;">
+<div style="background: #FFF; border: 1px #999 solid; width: 700px; margin: 0 auto; box-shadow: 0 0 5px rgba(0,0,0,0.3)">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%; height: 100%;"><tr>
+<td align="center">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr>
+<td>
+<div style="border-bottom: 1px #CCC solid;">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr><td style="text-align: left; padding: 10px 20px;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mLogo.gif" border="0" height="30px" width="200px" /></td></tr></table>
+</div>
+<div>
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;table-layout: fixed;"><tr>
+<td style="text-align: left; padding: 20px;">${toUser.communityName}さん、ヨドバシ・ドット・コムのコミュニティにようこそ！<br />このコミュニティでは、お客様同士で商品に関する知識を分かち合うことができます。</td>
+</tr></table>
+</div>
+<!-- container -->
+<div style="border-top: 1px #CCC dotted;">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr>
+<td style="padding: 20px;">
+<!-- block -->
+<div>
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;table-layout: fixed;"><tr>
+<td style="text-align: left;">
+<div style="font-size: 14px;"><strong>コミュニティでできること</strong></div>
+<div style="margin: 20px 0 0 0;"><div><span style="margin: 0 5px 0 0;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mIconS01.gif" height="20px" width="20px" style="vertical-align: middle; margin: 0 5px 0 0;" /><strong style="vertical-align: middle;">レビューを書く</strong></span></div><div style="margin: 5px 0 0 0;">購入直後、使用1ヶ月後などの単位で商品レビューを投稿でき、ヨドバシゴールドポイントを獲得できます（※）。</div></div>
+<div style="margin: 20px 0 0 0;"><div><span style="margin: 0 5px 0 0;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mIconS11.gif" height="20px" width="20px" style="vertical-align: middle; margin: 0 5px 0 0;" /><strong style="vertical-align: middle;">購入者Q＆Aに回答する、質問する</strong></span></div><div style="margin: 5px 0 0 0;">商品購入前に迷っていることや、購入後の使い方などをほかのユーザーに質問できます。また逆にご自身が購入された商品への質問も他のユーザーから届きます。</div></div>
+#*
+<div style="margin: 20px 0 0 0;"><div><span style="margin: 0 5px 0 0;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mIconS06.gif" height="20px" width="20px" style="vertical-align: middle; margin: 0 5px 0 0;" /><strong style="vertical-align: middle;">商品マスター制度</strong></span></div><div style="margin: 5px 0 0 0;">コミュニティ活動数や他のユーザーからの信頼が高い方は「商品マスター」の称号を獲得できます。</div></div>
+*#
+<div style="margin: 20px 0 0 0;"><div><span style="margin: 0 5px 0 0;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mIconSGPC.gif" height="20px" width="20px" style="vertical-align: middle; margin: 0 5px 0 0;" /><strong style="vertical-align: middle;">投稿者全員にポイントのチャンス</strong></span></div><div style="margin: 5px 0 0 0;">レビュー投稿やQ＆Aの回答などに対してほかのユーザーからの評価を得るなどのコミュニティ活動度に応じてヨドバシゴールドポイントを獲得できます。</div></div>
+<div style="margin: 20px 0 0 0;"><div><span style="margin: 0 5px 0 0;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mIconS04.gif" height="20px" width="20px" style="vertical-align: middle; margin: 0 5px 0 0;" /><strong style="vertical-align: middle;">商品、ユーザー、Q＆Aをフォローする</strong></span></div><div style="margin: 5px 0 0 0;">気になる商品、ユーザー、Q＆Aをフォローすることで、新着レビューや新着Q＆A情報を見逃しません。</div></div>
+<div style="margin: 20px 0 0 0;"><div><span style="margin: 0 5px 0 0;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mIconS19.gif" height="20px" width="20px" style="vertical-align: middle; margin: 0 5px 0 0;" /><strong style="vertical-align: middle;">メールでお知らせ機能</strong></span></div><div style="margin: 5px 0 0 0;">購入した商品にほかのユーザーからフォローされたときなど、その都度メールでお知らせします。<a href="http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html" style="color: #0D6295;" target="_blank">メール通知設定</a>で通知頻度を変更できます。</div></div>
+<div style="margin: 20px 0 0 0;"><div><span style="margin: 0 5px 0 0;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mIconSFacebook.gif" height="20px" width="20px" style="vertical-align: middle; margin: 0 5px 0 0;" /><strong style="vertical-align: middle;">ほかのソーシャルメディアと連携</strong></span></div><div style="margin: 5px 0 0 0;"><a href="http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/sns/input.html" target="_blank" style="color: #0D6295;">ソーシャルメディア連携設定</a>によって、TwitterやFacebookなどほかのソーシャルメディアと簡単に連携できます。</div></div>
+<div style="margin: 20px 0 0 0;">※レビューはどなたでも投稿できますが、ヨドバシカメラ店舗またはヨドバシ・ドット・コムで購入したお客様のレビュー投稿につきヨドバシゴールドポイントを獲得できます。なお、コミュニティ活動度・信頼度に応じたポイントはどなたも獲得のチャンスがあります。<br /><br />※コミュニティはみんなの場です。誹謗中傷、わいせつな行為、著作権違反などの行為は禁じています。<a href="${serviceConfig.communityGuideline}" target="_blank" style="color: #0D6295;">コミュニティ参加規約</a>をお読みください。</div>
+</td>
+</tr></table>
+</div>
+<!-- /block -->
+
+</td>
+</tr></table>
+</div>
+<!-- /container -->
+
+<div style="border-top: 1px #CCC dotted;">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;table-layout: fixed;"><tr>
+<td style="text-align: left; padding: 20px;">$toUser.communityNameさんのコミュニティでのご活躍を楽しみにしております！<br /><br />よろしくお願いいたします。<br />ヨドバシ・ドット・コム</td>
+</tr></table>
+</div>
+
+<div style="border-top: 1px #CCC solid;"><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr><td style="text-align: left; padding: 20px;">今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻度を変更したい場合は、<a href="http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html" target="_blank" style="color: #0D6295;">メール通知設定</a>から変更することができます。</td></tr></table></div>
+
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div style="width: 700px; margin: 10px auto 0;"><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr><td style="font-size: 10px;">${serviceConfig.communityCopyright}</td><td style="text-align: right;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mLogoS.gif" border="0" height="20px" width="140px" /></td></tr></table></div>
+
+</div>
+</body>
+</html>

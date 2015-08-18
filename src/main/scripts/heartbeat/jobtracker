@@ -1,0 +1,170 @@
+#!/bin/sh
+#######################################################################
+# OCF parameters:
+#   OCF_RESKEY_hadoop_name - The name of the resource. Default is jobtracker
+#   OCF_RESKEY_hadoop_user  - A user name to start a resource. Default is hadoop
+#   OCF_RESKEY_hadoop_home - Home directory of Hadoop. Default is None
+#   OCF_RESKEY_hadoop_http_host - Http Server Host Address of Hadoop.
+#   OCF_RESKEY_hadoop_http_port - Http Server port number of Hadoop.
+###############################################################################
+
+. ${OCF_ROOT}/resource.d/heartbeat/.ocf-shellfuncs
+
+HADOOP_NAME="${OCF_RESKEY_hadoop_name}"
+HADOOP_USER="${OCF_RESKEY_hadoop_user}"
+HADOOP_HOME=`echo ${OCF_RESKEY_hadoop_home} | sed -e "s/\(.*\)\/$/\1/g"`
+HADOOP_HTTP="${OCF_RESKEY_hadoop_http}"
+HADOOP_HTTP_PORT="${OCF_RESKEY_hadoop_http_port}"
+
+monitor_jobtracker()
+{
+	process=`/usr/bin/pgrep -f jobtracker`
+	if [ -z "$process" ]; then
+		return $OCF_NOT_RUNNING
+	fi
+
+	if wget -O /dev/null http://$HADOOP_HTTP:$HADOOP_HTTP_PORT/index.html 2>/dev/null
+	then
+		return $OCF_SUCCESS
+	else
+		return $OCF_NOT_RUNNING
+	fi
+}
+
+start_jobtracker()
+{
+	cd $HADOOP_HOME
+	monitor_jobtracker
+	if [ $? = $OCF_SUCCESS ]; then
+		return $OCF_SUCCESS
+	fi
+	
+	su - $HADOOP_USER -c "$HADOOP_HOME/bin/hadoop-daemon.sh start jobtracker" &
+	while true; do
+		monitor_jobtracker
+		if [ $? = $OCF_SUCCESS ]; then
+			break
+		fi
+	done
+
+	return $OCF_SUCCESS
+}
+
+stop_jobtracker()
+{
+	cd $HADOOP_HOME
+	monitor_jobtracker
+	if [ $? = $OCF_NOT_RUNNING ]; then
+		return $OCF_SUCCESS
+	fi
+	
+	su - $HADOOP_USER -c "$HADOOP_HOME/bin/hadoop-daemon.sh stop jobtracker" &
+	
+	while true; do
+		monitor_jobtracker
+		if [ $? = $OCF_NOT_RUNNING ]; then
+			break
+		fi
+	done
+
+	return $OCF_SUCCESS
+}
+
+metadata_jobtracker()
+{
+    cat <<END
+<?xml version="1.0"?>
+<!DOCTYPE resource-agent SYSTEM "ra-api-1.dtd">
+<resource-agent name="jobtracker">
+<version>1.0</version>
+
+<longdesc lang="en">
+Resource script for Hadoop Namenode. It manages a Hadoop Namenode instance as an HA resource.
+</longdesc>
+<shortdesc lang="en">Hadoop Namenode resource agent</shortdesc>
+
+<parameters>
+
+<parameter name="hadoop_name" unique="1" >
+<longdesc lang="en">
+The name of the resource
+</longdesc>
+<shortdesc>The name of the resource</shortdesc>
+<content type="string" default="jobtracker" />
+</parameter>
+
+<parameter name="hadoop_user" unique="0">
+<longdesc lang="en">
+A user name to start a resource
+</longdesc>
+<shortdesc>A user name to start a resource</shortdesc>
+<content type="string" default="hadoop" />
+</parameter>
+
+<parameter name="hadoop_home" unique="1" required="1">
+<longdesc lang="en">
+Home directory of Hadoop
+</longdesc>
+<shortdesc>Home directory of Hadoop</shortdesc>
+<content type="string" default="" />
+</parameter>
+
+<parameter name="hadoop_http" unique="1" required="1">
+<longdesc lang="en">
+Http Server Host Address of Hadoop.
+</longdesc>
+<shortdesc>Http Server Host Address of Hadoop</shortdesc>
+<content type="string" default="" />
+</parameter>
+
+<parameter name="hadoop_http_port" unique="1" required="1">
+<longdesc lang="en">
+Http Server Port Number of Hadoop.
+</longdesc>
+<shortdesc>Http Server Port Number of Hadoop</shortdesc>
+<content type="string" default="" />
+</parameter>
+
+</parameters>
+
+<actions>
+<action name="start" timeout="60s" />
+<action name="stop" timeout="120s" />
+<action name="monitor" depth="0" timeout="30s" interval="10s" start-delay="10s" />
+<action name="meta-data" timeout="5s" />
+</actions>
+</resource-agent>
+END
+	return $OCF_SUCCESS
+}
+
+COMMAND=$1
+
+case "$COMMAND" in
+	start)
+		ocf_log debug  "[$HADOOP_NAME] Enter Hadoop JobTracker start"
+		start_jobtracker
+		func_status=$?
+		ocf_log debug  "[$HADOOP_NAME] Leave Hadoop JobTracker start $func_status"
+		exit $func_status
+		;;
+	stop)
+		ocf_log debug  "[$HADOOP_NAME] Enter Hadoop JobTracker stop"
+		stop_jobtracker
+		func_status=$?
+		ocf_log debug  "[$HADOOP_NAME] Leave Hadoop JobTracker stop $func_status"
+		exit $func_status
+		;;
+	monitor)
+		ocf_log debug  "[$HADOOP_NAME] Enter Hadoop JobTracker monitor"
+		monitor_jobtracker
+		func_status=$?
+		ocf_log debug  "[$HADOOP_NAME] Leave Hadoop JobTracker monitor $func_status"
+		exit $func_status
+		;;
+	meta-data)
+		metadata_jobtracker
+		exit $?
+		;;
+esac
+

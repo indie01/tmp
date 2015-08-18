@@ -1,0 +1,25 @@
+{
+    "000000000000000000": {
+        "categoryCode": "000000000000000000", 
+        "meta": {
+            "A001_DESCRIPTION": "新しく追加　例）デザイン、価格、使い勝手、機能性などＡ", 
+            "A001_TITLE": "購入の決め手Ａ", 
+            "A002_DESCRIPTION": "商品名を検索してくださいＡ１", 
+            "A002_TITLE": "購入を迷った商品Ａ", 
+            "A003_DESCRIPTION": "商品名を検索してくださいＡ２", 
+            "A003_TITLE": "過去に使っていた商品Ａ", 
+            "A004_DESCRIPTION": "この商品を選んだ動機、経緯、購入した喜びなどをお書きくださいＡ", 
+            "A004_TITLE": "レビューＡ", 
+            "A005_DESCRIPTION": "", 
+            "A005_TITLE": "満足度Ａ", 
+            "B001_DESCRIPTION": "", 
+            "B001_TITLE": "満足度Ｂ", 
+            "B002_DESCRIPTION": "", 
+            "B002_TITLE": "この製品を次も買いますかＢ", 
+            "B003_DESCRIPTION": "この商品を選んだ動機、経緯、購入した喜びなどをお書きくださいＢ", 
+            "B003_TITLE": "レビューＢ"
+        }, 
+        "modifyDateTime": null, 
+        "registerDateTime": null
+    }
+}

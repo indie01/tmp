@@ -1,0 +1,25 @@
+${toUser.communityName}さんが商品をお使いになった感想をお聞かせください 
+
+
+こんにちは
+
+${toUser.communityName}さんが商品をお使いになった感想を、ぜひコミュニティのみなさんにお聞かせください。
+$helper.dateFormat(${purchaseProducts.get(0).nextLimitDate}, 'yyyy年MM月dd日')までに感想を投稿いただくとポイントが進呈されます。
+
+#foreach ($purchaseProduct in $purchaseProducts)
+
+「${purchaseProduct.product.productName}」
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/product/${purchaseProduct.product.sku}/index.html
+
+#end
+
+${toUser.communityName}さんのレビュー投稿をお待ちしています。
+
+よろしくお願いいたします。
+ヨドバシ・ドット・コム
+----------------------------------------------------------------------------------------------------------------------
+今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻
+度を変更したい場合は、メール通知設定から変更することができます。
+
+メール通知設定
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html

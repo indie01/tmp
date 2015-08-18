@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	<aop:aspectj-autoproxy/>
+
+	<beans profile="default">
+		<context:property-placeholder location="classpath:resource-config.properties,classpath:service-config.properties,classpath:path-config.properties,classpath:jcclient-config.properties,classpath:social-config.properties,classpath:webservice-client-config.properties,classpath:mr-config.properties,classpath:mr-env-config.properties,classpath:ValidationMessages_ja.properties,classpath*:/*-config.properties" system-properties-mode="OVERRIDE" local-override="true"/>
+	</beans>
+
+	<beans profile="km_staging,staging_old,staging,staging_new,staging_2,product,km_demo,km_test">
+		<context:property-placeholder location="classpath:profile/${spring.profiles.active}/resource-config.properties,classpath:profile/${spring.profiles.active}/service-config.properties,classpath:profile/${spring.profiles.active}/path-config.properties,classpath:profile/${spring.profiles.active}/jcclient-config.properties,classpath:profile/${spring.profiles.active}/social-config.properties,classpath:profile/${spring.profiles.active}/webservice-client-config.properties,classpath:profile/${spring.profiles.active}/mr-config.properties,classpath:profile/${spring.profiles.active}/mr-env-config.properties,classpath:ValidationMessages_ja.properties,classpath*:/profile/${spring.profiles.active}/*-config.properties" system-properties-mode="OVERRIDE" local-override="true"/>
+	</beans>
+
+	<beans>
+		<bean class="org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator" />
+		<context:component-scan base-package="com.kickmogu.yodobashi.community.common.converter" />
+		<bean class="com.kickmogu.yodobashi.community.resource.config.ResourceContext" />
+		<context:component-scan base-package="com.kickmogu.yodobashi.community.resource">
+			<context:include-filter type="regex" expression="com.kickmogu.yodobashi.community.resource.aop.*"/>
+			<context:include-filter type="regex" expression="com.kickmogu.yodobashi.community.resource.config.*"/>
+			<context:exclude-filter type="regex" expression="com.kickmogu.yodobashi.community.resource.dao.*"/>
+			<context:exclude-filter type="regex" expression="com.kickmogu.yodobashi.community.resource.hase2solr.*"/>
+		</context:component-scan>
+		<context:component-scan base-package="com.kickmogu.yodobashi.community.resource.dao" />
+		<context:component-scan base-package="com.kickmogu.yodobashi.community.resource.hbase2solr" />
+	</beans>
+</beans>

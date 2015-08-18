@@ -1,0 +1,21 @@
+フォローしている${questionAnswer.communityUser.communityName}さんがQ&Aに回答しました - 「${questionAnswer.product.productName}」
+
+こんにちは
+
+フォローしている${questionAnswer.communityUser.communityName}さんが「${questionAnswer.product.productName}」に関するQ&Aに回答しました。
+
+商品名：${questionAnswer.product.productName}
+質問：$helper.shortTextTitle(${questionAnswer.question.questionBody})
+回答本文：$helper.shortTextBody(${questionAnswer.answerBody})
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/product/question/${questionAnswer.question.questionId}/detail.html
+
+役立ったときは、「${serviceConfig.likeAnswerLabel}」を押したり、コメントを投稿してくださいね！
+
+よろしくお願いいたします。
+ヨドバシ・ドット・コム
+----------------------------------------------------------------------------------------------------------------------
+今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻
+度を変更したい場合は、メール通知設定から変更することができます。
+
+メール通知設定
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html

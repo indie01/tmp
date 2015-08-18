@@ -1,0 +1,22 @@
+フォローしているQ&Aに回答が投稿されました
+
+こんにちは
+
+フォローしているQ&Aに回答が投稿されました。
+
+#foreach ($questionAnswer in $questionAnswers.documents)
+Q&Ａ質問：$helper.shortTextTitle(${questionAnswer.question.questionBody})
+${questionAnswer.communityUser.communityName}さんの回答：$helper.shortTextBody(${questionAnswer.answerBody})
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/product/question/${questionAnswer.question.questionId}/detail.html
+
+#end
+役立ったときは、「${serviceConfig.likeAnswerLabel}」を押したり、コメントを投稿してくださいね！
+
+よろしくお願いいたします。
+ヨドバシ・ドット・コム
+----------------------------------------------------------------------------------------------------------------------
+今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻
+度を変更したい場合は、メール通知設定から変更することができます。
+
+メール通知設定
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html

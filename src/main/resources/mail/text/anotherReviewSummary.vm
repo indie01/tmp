@@ -1,0 +1,23 @@
+${toUser.communityName}さんがレビューした商品に別のレビューが投稿されました
+
+こんにちは
+
+${toUser.communityName}さんがレビューした商品に別のレビューが投稿されました。
+
+#foreach ($review in $reviews.documents)
+商品名：${review.product.productName}
+投稿者：${review.communityUser.communityName}
+本文：$helper.shortTextBody(${review.reviewBody})
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/product/review/${review.reviewId}/detail.html
+
+#end
+役立ったときは、「${serviceConfig.likeReviewLabel}」を押したり、コメントを投稿してくださいね！
+
+よろしくお願いいたします。
+ヨドバシ・ドット・コム
+----------------------------------------------------------------------------------------------------------------------
+今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻
+度を変更したい場合は、メール通知設定から変更することができます。
+
+メール通知設定
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html

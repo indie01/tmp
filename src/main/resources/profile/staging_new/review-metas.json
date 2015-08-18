@@ -1,0 +1,48 @@
+{
+    "000000000000000000": {
+        "categoryCode": "000000000000000000", 
+        "meta": {
+            "A001_DESCRIPTION": "新しく追加　例）デザイン、価格、使い勝手、機能性など", 
+            "A001_TITLE": "購入の決め手", 
+            "A002_DESCRIPTION": "商品名を検索してください", 
+            "A002_TITLE": "購入を迷った商品", 
+            "A003_DESCRIPTION": "商品名を検索してください", 
+            "A003_TITLE": "過去に使っていた商品", 
+            "A004_DESCRIPTION": "この商品を選んだ動機、経緯、購入した喜びなどをお書きください", 
+            "A004_TITLE": "レビュー", 
+            "A005_DESCRIPTION": "", 
+            "A005_TITLE": "満足度", 
+            "B001_DESCRIPTION": "", 
+            "B001_TITLE": "満足度", 
+            "B002_DESCRIPTION": "", 
+            "B002_TITLE": "この商品を次も買いますか", 
+            "B003_DESCRIPTION": "この商品を選んだ動機、経緯、購入した喜びなどをお書きください", 
+            "B003_TITLE": "レビュー"
+        }, 
+        "modifyDateTime": null, 
+        "registerDateTime": null
+    }, 
+    "811000000000000000": {
+        "categoryCode": "811000000000000000", 
+        "meta": {
+            "A001_DESCRIPTION": "新しく追加　例）作者に興味がある、ストーリー、話題性など", 
+            "A001_TITLE": "購入の決め手", 
+            "A002_DESCRIPTION": "書籍名を検索してください", 
+            "A002_TITLE": "購入を迷った書籍", 
+            "A003_DESCRIPTION": "書籍名を検索してください", 
+            "A003_TITLE": "過去に読んだことのある書籍", 
+            "A004_DESCRIPTION": "この書籍を選んだ動機、経緯、読んでみた感想などをお書きください", 
+            "A004_TITLE": "レビュー", 
+            "A005_DESCRIPTION": "", 
+            "A005_TITLE": "満足度", 
+            "B001_DESCRIPTION": "", 
+            "B001_TITLE": "満足度", 
+            "B002_DESCRIPTION": "", 
+            "B002_TITLE": "この書籍の新刊が発売されたら買いますか", 
+            "B003_DESCRIPTION": "この書籍を選んだ動機、経緯、読んでみた感想などをお書きください", 
+            "B003_TITLE": "レビュー"
+        }, 
+        "modifyDateTime": null, 
+        "registerDateTime": null
+    }
+}

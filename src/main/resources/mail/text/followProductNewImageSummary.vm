@@ -1,0 +1,23 @@
+フォローしている商品に画像が投稿されました
+
+こんにちは
+
+フォローしている商品に画像が投稿されました。
+
+#foreach ($imageHeader in $imageSets.documents)
+商品名：${imageHeader.topImage.product.productName}
+${imageHeader.topImage.ownerCommunityUser.communityName}さんの投稿画像はこちらからご覧ください。
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/product/image/${imageHeader.topImage.product.sku}/${imageHeader.topImage.imageTargetType.code}/${imageHeader.topImage.contentsId}/detail.html
+
+#end
+
+役立ったときは、「${serviceConfig.likeImageLabel}」を押したり、コメントを投稿してくださいね！
+
+よろしくお願いいたします。
+ヨドバシ・ドット・コム
+----------------------------------------------------------------------------------------------------------------------
+今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻
+度を変更したい場合は、メール通知設定から変更することができます。
+
+メール通知設定
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html

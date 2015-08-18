@@ -1,0 +1,24 @@
+${topFollower.communityUser.communityName}さん#if($helper.addition(${followers.numFound}, -1) != '0')他$helper.addition(${followers.numFound}, -1)人#endからフォローされました
+
+こんにちは
+
+${topFollower.communityUser.communityName}さん#if($helper.addition(${followers.numFound}, -1) != '0')他 $helper.addition(${followers.numFound}, -1)人#endからフォローされました。
+
+#foreach ($followerUser in $followers.documents)
+ニックネーム：${followerUser.communityUser.communityName}
+${followerUser.postReviewCount} レビュー | ${followerUser.postAnswerCount} 回答 | ${followerUser.postQuestionCount} 質問 | ${followerUser.followUserCount}人をフォロー
+                                                                                                                      
+#foreach ($productMaster in $followerUser.productMasters)
+・${productMaster.product.productName}の商品マスターTOP${productMaster.rank}
+#end
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/user/$helper.urlEncode(${followerUser.communityUser.communityName})/index.html
+
+#end
+よろしくお願いいたします。
+ヨドバシ・ドット・コム
+----------------------------------------------------------------------------------------------------------------------
+今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻
+度を変更したい場合は、メール通知設定から変更することができます。
+
+メール通知設定
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html

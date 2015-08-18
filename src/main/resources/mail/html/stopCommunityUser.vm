@@ -1,0 +1,32 @@
+コミュニティアカウント一時停止のご連絡
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ヨドバシコミュニティメール</title>
+</head>
+<body style="margin: 0; padding: 0;">
+<div style="font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Osaka, sans-serif, arial, verdana; text-align: left; background: #EFEFEF; font-size: 12px; line-height: 1.4; padding: 20px 0;">
+<div style="background: #FFF; border: 1px #999 solid; width: 700px; margin: 0 auto; box-shadow: 0 0 5px rgba(0,0,0,0.3)">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%; height: 100%;"><tr>
+<td align="center">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr>
+<td>
+<div style="border-bottom: 1px #CCC solid;">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr><td style="text-align: left; padding: 10px 20px;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mLogo.gif" border="0" width="200px" height="30px" /></td></tr></table>
+</div>
+<div>
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr>
+<td style="text-align: left; padding: 20px;">${toUser.communityName}様<br /><br />平素よりヨドバシ・ドット・コムをご利用いただき、誠にありがとうございます。<br /><br />コミュニティ参加規約に違反したと思われる行為がありましたので、大変恐縮ながら、${toUser.communityName}様のコミュニティアカウントを一時停止させていただきました。一時停止により、ほかのお客様からは${toUser.communityName}様の投稿内容・コミュニティユーザーページなどが見れないようになっております。<br /><br /><a href="${serviceConfig.communityGuideline}"　target="_blank" style="color: #164eb5;">コミュニティ参加規約</a><br /><br />該当するレビューを削除または編集いただき、参加規約違反がなくなったことを確認できましたらコミュニティアカウントを再開させていただきます。<br /><br />また、コミュニティアカウント一時停止措置が複数回続きますと、完全に停止させていただく場合もございます。一度停止措置となりましたアカウントは以後コミュニティへの参加を不可とさせていただきますので、何卒ご了承ください。<br /><br /></td>
+</tr></table>
+</div>
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+<div style="width: 700px; margin: 10px auto 0;"><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr><td style="font-size: 10px;">${serviceConfig.communityCopyright}</td><td style="text-align: right;"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mLogoS.gif" border="0" width="140px" height="20px" /></td></tr></table></div>
+</div>
+</body>
+</html>

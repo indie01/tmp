@@ -1,0 +1,20 @@
+フォローしている${topImage.ownerCommunityUser.communityName}さんが画像を投稿しました - 「${product.productName}」
+
+こんにちは
+
+フォローしている${topImage.ownerCommunityUser.communityName}さんが「${product.productName}」に画像を投稿しました。
+
+商品名：${product.productName}
+${topImage.ownerCommunityUser.communityName}さんの投稿画像はこちらからご覧ください。
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/product/image/${product.sku}/${topImage.imageTargetType.code}/${topImage.contentsId}/detail.html
+
+役立ったときは、「${serviceConfig.likeImageLabel}」を押したり、コメントを投稿してくださいね！
+
+よろしくお願いいたします。
+ヨドバシ・ドット・コム
+----------------------------------------------------------------------------------------------------------------------
+今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻
+度を変更したい場合は、メール通知設定から変更することができます。
+
+メール通知設定
+http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html

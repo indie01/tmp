@@ -1,0 +1,66 @@
+${toUser.communityName}さんの投稿画像にコメントが届いています - 「${comment.imageHeader.product.productName}」
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ヨドバシコミュニティメール</title>
+</head>
+<body style="margin: 0; padding: 0;">
+<div style="font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Osaka, sans-serif, arial, verdana; text-align: left; background: #FFFFFF; font-size: 12px; line-height: 1.4; padding: 10px 0; word-break: break-all; word-wrap: break-word;">
+<div style="background: #FFF; border: 1px #999 solid; width: 700px; margin: 0 auto; box-shadow: 0 0 5px rgba(0,0,0,0.3)">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%; height: 100%;"><tr>
+<td align="center">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr>
+<td>
+<div style="border-bottom: 1px #CCC solid;">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr><td style="text-align: left; padding: 10px 20px;"><a href="http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/" target="_blank"><img src="http:${serviceConfig.mailCommunityImageUrl}img/mail/mLogo.gif" border="0" width="200px" height="30px" /></a></td></tr></table>
+</div>
+<div>
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr>
+<td style="text-align: left; padding: 20px;">こんにちは<br /><br />${toUser.communityName}さんの投稿画像に、${comment.communityUser.communityName}さんからコメントが届いています。</td>
+</tr></table>
+</div>
+<!-- container -->
+<div style="border-top: 1px #CCC dotted;">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr>
+<td style="padding: 20px; text-align: left;">
+<!-- block -->
+<div>
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%; table-layout: fixed;"><tr>
+<td style="vertical-align: top; text-align: left;">
+<div><a href="http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/product/image/${comment.imageHeader.product.sku}/${comment.imageHeader.imageTargetType.code}/${comment.imageHeader.contentsId}/detail.html" target="_blank" style="color: #0D6295;">「<strong>${comment.product.productName}</strong>」への投稿画像</a></div>
+<div style="background: #EFEFEF; border: 1px #CCC solid; padding: 10px; margin: 10px 0 0 0;">
+<div style="margin: 0 0 5px 0;"><span style="margin: 0 5px 0 0;"><img src="$helper.getProfileImageUrl(${comment.communityUser.communityName})" height="30px" width="30px" style="vertical-align: middle; margin: 0 5px 0 0;" /><a href="http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/user/$helper.urlEncode(${comment.communityUser.communityName})/index.html" target="_blank" style="color: #0D6295;">${comment.communityUser.communityName}</a></span></div>
+<div>$helper.shortBody(${comment.commentBody})</div>
+<div style="margin: 10px 0 0 0;"><a href="http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/product/image/${comment.imageHeader.product.sku}/${comment.imageHeader.imageTargetType.code}/${comment.imageHeader.contentsId}/detail.html" target="_blank" style="display: block; max-width: 160px; text-align: center; border: 1px solid #566B7E; border-radius: 5px; background: #DDF2FB; color: #333; font-weight: bold; padding: 5px; text-decoration: none;">コメントを見る</a></div>
+</div>
+</td>
+</tr></table>
+</div>
+<!-- /block -->
+
+</td>
+</tr></table>
+</div>
+<!-- /container -->
+
+<div style="border-top: 1px #CCC dotted;">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr>
+<td style="text-align: left; padding: 20px;">役立ったときは、コメントを投稿してくださいね！<br /><br />よろしくお願いいたします。<br />ヨドバシ・ドット・コム</td>
+</tr></table>
+</div>
+
+<div style="border-top: 1px #CCC solid;"><table cellspacing="0" cellpadding="0" border="0" style="width: 100%;"><tr><td style="text-align: left; padding: 20px;">今後ヨドバシ・ドット・コムからこのようなメールを受けとりたくない場合は、または通知頻度を変更したい場合は、<a href="http://${serviceConfig.communityDomain}/${serviceConfig.communityContextPath}/mypage/mail/input.html" target="_blank" style="color: #0D6295;">メール通知設定</a>から変更することができます。</td></tr></table></div>
+
+</td>
+</tr></table>
+</td>
+</tr></table>
+</div>
+
+<div style="width: 700px; margin: 10px auto 0; text-align: center; font-size: 10px;">${serviceConfig.communityCopyright}</div>
+
+</div>
+</body>
+</html>
